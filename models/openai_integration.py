@@ -19,5 +19,16 @@ class OpenAIIntegration(models.Model):
             'max_tokens': 100,
         }
 
-        response = requests.post('https://api.openai.com/v1/engines/davinci-codex/completions')
+        response = requests.post(
+            'https://api.openai.com/v1/engines/davinci-codex/completions',
+            headers=headers,
+            json=data
+        )
+
+        if response.status_code == 200:
+            result = response.json()
+            return result
+        else:
+            raise ValueError(f"Error: {response.status_code}: {response.text}")
+
 
