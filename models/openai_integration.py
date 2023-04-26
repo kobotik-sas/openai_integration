@@ -19,5 +19,5 @@ class OpenAIIntegration(models.Model):
             'max_tokens': 100,
         }
 
-        response = requests.post('https://api.openai.com/v1/engines/davinci-codex')
+        response = requests.post('https://api.openai.com/v1/engines/davinci-codex/completions')
 
